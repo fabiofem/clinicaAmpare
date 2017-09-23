@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatoriosFuncionarios" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d15ae31a-600f-4498-82ae-f289e03b0bdc">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ConexaoBaseDeDados "/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="300"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="690"/>
+	<parameter name="PESSOA_ID" class="java.lang.Integer">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="PASSAGEM_DO_DIA_ID" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT clinica.passagem.`dataEntrada` AS DataEntrada,
+	clinica.passagem.entrada AS Entrada,
+	clinica.funcionario.`nomeCompleto` AS NomeCompleto
+FROM clinica.passagem
+	INNER JOIN clinica.funcionario ON 
+	 clinica.funcionario.id = clinica.passagem.pessoa_id 
+WHERE 
+	 $X{EQUAL,clinica.passagem.pessoa_id,PESSOA_ID} 
+	 AND $X{EQUAL,clinica.passagem.`passagemDoDia_id`,PASSAGEM_DO_DIA_ID}]]>
+	</queryString>
+	<field name="DataEntrada" class="java.sql.Timestamp"/>
+	<field name="Entrada" class="java.lang.Boolean"/>
+	<field name="NomeCompleto" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="32" width="150" height="30" uuid="dc91ff36-1dc7-4f76-9633-07ee1aedaf2b"/>
+				<textElement textAlignment="Left">
+					<font fontName="SansSerif" size="18" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Relatório do dia:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="150" y="30" width="130" height="30" isPrintWhenDetailOverflows="true" uuid="deb416ef-abd3-406f-b2ea-63a9692b5760"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DataEntrada}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="48" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="11" width="180" height="30" uuid="83a6cda4-81fa-4b14-a61c-9cc4644f7415"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOME:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="11" width="130" height="30" uuid="9d69243f-e25c-460b-90d2-767d1de9d212"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ENTRADA/SAÍDA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="9" width="100" height="30" uuid="94d83ee1-04a2-4bf3-8200-c5a2d4330b3d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Horário:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="80" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="180" height="30" uuid="4eeb0802-b1c2-4a63-ba52-973ea0f2d701"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NomeCompleto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss">
+				<reportElement x="360" y="0" width="130" height="30" isPrintWhenDetailOverflows="true" uuid="8a8de025-d4fa-4f50-9e31-dae50768deac"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DataEntrada}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="0" width="170" height="30" uuid="b09c5a91-cd6d-4f9f-9f1e-3b08b5d03a84"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Entrada}==true?"Entrada":"Saída"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
