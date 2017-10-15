@@ -45,6 +45,7 @@ public class TelaAgendamento extends JFrame {
 	private JTextField textFieldHoras;
 	private JLabel lblValor;
 	private JTextField textFieldValor;
+	
 	public static final String CMD_SALVAR_AGENDA="Agendar";
 	public static final String CMD_REMOVER_AGENDA="Remover Agenda";
 	
