@@ -28,6 +28,9 @@ import br.com.clinica.tabelas.PlanoDeSaude;
 import br.com.clinica.util.ComboboxUtil;
 import br.com.clinica.util.LogUtil;
 
+/*
+ *Tela de Agendamento 
+ */
 public class TelaAgendamento extends JFrame {
 
 	private static final long serialVersionUID = -4827011917663213615L;
