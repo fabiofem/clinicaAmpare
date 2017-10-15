@@ -29,7 +29,7 @@ import br.com.clinica.util.ComboboxUtil;
 import br.com.clinica.util.LogUtil;
 
 /*
- *Tela de Agendamento 
+ *Tela de Agendamento 2.2
  */
 public class TelaAgendamento extends JFrame {
 
