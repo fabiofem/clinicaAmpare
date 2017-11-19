@@ -19,6 +19,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import br.com.clinica.apresentacao.TelaAgendamento;
 import br.com.clinica.apresentacao.TelaCadastroFuncionario;
+import br.com.clinica.apresentacao.TelaCadastroMedico;
 import br.com.clinica.apresentacao.TelaCadastroPaciente;
 import br.com.clinica.apresentacao.TelaCadastroPlano;
 import br.com.clinica.apresentacao.TelaDeRelatorios;
@@ -93,6 +94,7 @@ public class ControllerClinica extends TimerTask   implements ActionListener,Win
 	        principal.getTextFieldAtualizacao().setText(ConversorDatasUtil.formatoDatasHoras( Calendar.getInstance()));
 	        principal.getMntmGerenciarFuncionrios().addActionListener(this);
 	        principal.getMntmGerenciarPacientes().addActionListener(this);
+	        principal.getGetMntmGerenciarMedicos().addActionListener(this);
 	        principal.getMntmDefinaOsParmetros().addActionListener(this);
 	      
 	    }
@@ -168,7 +170,13 @@ public class ControllerClinica extends TimerTask   implements ActionListener,Win
 				 biometria.setVerificarPause(false);
 				 biometria.cadastrarImpressaoDigital();
 				 biometria.addObserver(telaCadastroFuncionario);
-			}else if(cmd.equals(TelaPrincipal.CMD_TELA_CADASTRO_PAC)){
+		   }else if(cmd.equals(TelaPrincipal.CMD_TELA_CADASTRO_MEDICOS)){
+				 LogUtil.Log("Controller: clicou  Cadastro  Médicos", Level.INFO);
+				 TelaCadastroMedico telaCadastroMedico = new TelaCadastroMedico();
+				 System.out.println("xxxxxxxxxxxxxxxx"); 
+			
+		   
+		    }else if(cmd.equals(TelaPrincipal.CMD_TELA_CADASTRO_PAC)){
 				LogUtil.Log("Controller: clicou  Cadastro  Pacientes", Level.INFO); 
 				telaCadastroPaciente = new TelaCadastroPaciente(biometria);
 				telaCadastroPaciente.setVisible(true);

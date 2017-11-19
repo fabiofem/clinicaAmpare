@@ -80,6 +80,7 @@ public class TelaPrincipal extends JFrame implements IObseverBiometria{
 	public final static String CMD_TELA_CADASTRO_FUNC="Cadastrar Funcionário";
 	public final static String CMD_TELA_CADASTRO_PAC="Cadastrar Paciente";
 	public final static String CMD_TELA_AGENDAMENTO="Cadastrar Agendamento";
+	public final static String CMD_TELA_CADASTRO_MEDICOS="Cadastrar Medicos";
 	public final static String CMD_TELA_PLANO="Plano de Saúde";
 	public final static String CMD_TELA_GERENCIAR_PAC="Gerenciar Pacientes";
 	public final static String CMD_TELA_GERENCIAR_FUN="Gerenciar Funcionários";
@@ -87,6 +88,8 @@ public class TelaPrincipal extends JFrame implements IObseverBiometria{
 	public final static String CMD_TELA_INFORMACOES="Informações";
 	public final static String CMD_TELA_SOBRE="Sobre";
 	public final static String CMD_TELA_DEFINIR_PARAMETROS_RELATORIOS="Defina os parâmetros";
+	private JMenuItem mntmCadastroMedico;
+
 	
 	
 	
@@ -117,6 +120,9 @@ public class TelaPrincipal extends JFrame implements IObseverBiometria{
 		
 		JMenu menuCadastro = new JMenu("Cadastro");
 		menuBarPrincipal.add(menuCadastro);
+		
+		mntmCadastroMedico = new JMenuItem(CMD_TELA_CADASTRO_MEDICOS);
+		menuCadastro.add(mntmCadastroMedico);
 		
 		mntmFuncionario = new JMenuItem(CMD_TELA_CADASTRO_FUNC);
 		menuCadastro.add(mntmFuncionario);
@@ -685,5 +691,11 @@ public class TelaPrincipal extends JFrame implements IObseverBiometria{
 	}
 	public void setMntmEscolhaODia(JMenuItem mntmEscolhaODia) {
 		this.mntmEscolhaODia = mntmEscolhaODia;
+	}
+	public JMenuItem getGetMntmGerenciarMedicos() {
+		return mntmCadastroMedico;
+	}
+	public void setGetMntmGerenciarMedicos(JMenuItem getMntmGerenciarMedicos) {
+		this.mntmCadastroMedico = getMntmGerenciarMedicos;
 	}
 }

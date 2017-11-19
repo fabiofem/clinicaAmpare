@@ -24,7 +24,7 @@ public class RestaurarBD {
 	public static void main(String[] args) {
 		 // restaurarImpressoesPacientes();
 		 //restaurarImpressoesFuncionarios();
-		//restaurarPlanos();
+		restaurarPlanos();
 	//criarPassagensPac();
 		
 
